@@ -29,14 +29,14 @@ public class UserConrtoller {
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model){
         model.addAttribute("userForm", new User());
-
         return "registration";
     }
+
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model){
         userValidator.validate(userForm, bindingResult);
         if(bindingResult.hasErrors()){
-            return "registranion";
+            return "registration";
         }
         userService.save(userForm);
 
@@ -46,6 +46,15 @@ public class UserConrtoller {
 
 
         }
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors()){
+            return "registration";
+        }
+        securityService.autoloogin(userForm.getUsername(), userForm.getConfirmPassword());
+
+        return "redirect:/welcome";
+    }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout){
@@ -56,7 +65,7 @@ public class UserConrtoller {
             model.addAttribute("message","Loged is failed");
         }
 
-        return "login";
+        return "welcome";
 
     }
 

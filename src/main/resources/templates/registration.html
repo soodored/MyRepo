@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org/">
 <head>
   <meta charset="UTF-8">
   <title>Авторизация</title>
-  <link rel="stylesheet" th:href="@{css/style.css}" href="css/style.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
 </head>
 <body>
 
@@ -29,22 +29,25 @@
       </div>
       <div class="cont_back_info">
         <div class="cont_img_back_grey">
-          <img th:src="@{img/bg.jpg}" src="img/bg.jpg" alt="" />
+          <img th:src="@{img/bg.jpg}" src="../static/img/bg.jpg" alt="" />
         </div>
       </div>
       <div class="cont_forms">
         <div class="cont_img_back_">
-          <img th:src="@{img/bg.jpg}" src="img/bg.jpg" alt="" />
+          <img th:src="@{img/bg.jpg}" src="../static/img/bg.jpg" alt="" />
         </div>
-        <form>
+
+        <form th:action="@{/login}" th:object="${userForm}" method="post">
         <div class="cont_form_login">
           <h2>Войти</h2>
-          <input type="text" placeholder="E-mail" />
-          <input type="password" placeholder="Пароль" />
+          <input type="text" placeholder="E-mail"  th:field="*{username}"/>
+          <input type="password" placeholder="Пароль" th:field="*{password}"/>
           <button class="btn_login" onclick="cambiar_login()">Войти</button>
         </div>
         </form>
-        <form>
+
+
+        <form >
         <div class="cont_form_sign_up">
           <h2>Регистрация</h2>
           <input type="text" placeholder="E-mail" />
@@ -54,11 +57,12 @@
           <button class="btn_sign_up" onclick="cambiar_sign_up()">Зарегистрироваться</button>
         </div>
         </form>
+
       </div>
     </div>
   </div>
 </div>
 
-  <script th:src="@{js/index.js}" src="js/index.js"></script>
+  <script th:src="@{js/index.js}" src="../static/js/index.js"></script>
 </body>
 </html>

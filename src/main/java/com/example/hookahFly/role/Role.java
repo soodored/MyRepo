@@ -10,13 +10,10 @@ public class Role {
     private Long id;
 
     @Column(name = "name")
-    private String name;
+    private RoleEnum name;
 
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
-
-
-
 
     public Role() {
     }
@@ -29,11 +26,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getName() {
+    public RoleEnum getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(RoleEnum name) {
         this.name = name;
     }
 

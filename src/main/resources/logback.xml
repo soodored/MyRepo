@@ -10,7 +10,7 @@
     <logger name = "com.example.hookahFly">
         <level value ="debug"/>
     </logger>
-    <logger name ="com.hookahFly">
+    <logger name ="com.example.hookahFly">
         <level value="info"/>
     </logger>
 
